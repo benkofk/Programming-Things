@@ -22,9 +22,9 @@ with an obstacle, we had to send messages to the controller.
 
 # Arduino
 
-The Zumo side was programmed in Arduino IDE, and it was essentially the worker for the controller. For the most part, it recieved an action, and
-processed that action. The ultra sonic sensor
+The Zumo side was programmed in Arduino IDE, and it was essentially the worker for the Processing controller. For the most part, it recieved an action, and processed that action. The ultra sonic sensor detected distances from obstacles, and returned the value. We did find it to show incorrect values sometimes, but most of the time it seemed to work well. The code we altered slightly was found
+at (http://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/), it seemed to be very accurate, so all we needed
+to change the return vals. We had some issues with finding available pins for the trig/echo. The Arduino board is connected to a Zumo robot and the XBee shield. The Zumo had a few pre-assigned actions, such as turn left, reverse or move forward that the controller could send. 
 
-Arduino was
+# How it works
 
--- cite all the things we've uesd- kinect colour thing, ultra sonic sensor, xbee references, kinect library
