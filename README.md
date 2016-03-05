@@ -28,3 +28,24 @@ to change the return vals. We had some issues with finding available pins for th
 
 # How it works
 
+The kinect is facing down onto the arena. 
+Inside the arena, there are three balls.
+One ball is green, this is the target.
+The other two balls are red and blue, these are mounted on the front (red) and back (blue) of the zumo, these are the Zumo's location.
+
+Processing scans the images pixels constantly and uses these inputs to make judgments. 
+For example, the red ball is sat on the front of the zumo, and the blue is on the back, if we minus the blue from the red coordinates,
+we have a trajectory that the zumo is on. Because we have the red (front of the zumo's) position, we can increment
+this trajectory to the red spot coordinates in a list, and find if the red spot matches up with the green spot if it was to follow the path. In an ideal world, it may be able to do this in one go if there are no obstacles, but the surface of our arena is uneven and therefore it will never do it perfectly. 
+
+To begin with, it gets a 'loosePath', it takes the red and blue ball, and spins until it finds the angle roughly of where the target is. This speeds up the calibration at the start. After it has a rough path, it then gets a more fine path with more accuracy, and begins turning less than when it's trying to get a rough reading. This allows for it to get on path. When on path, it goes forward
+until it reaches an obstacle or it has fell off the path. When falling off the path, it tries to get back on path. If this fails, it then repeats the loosePath method.  When reaching an obstacle, the Zumo reverses, checks the two directions to the left and right, and takes the one with more distance from an obstacle using the sensor.
+
+Once the red ball on the zumo is within 25 pixels of the target, it does the victory dance. 
+
+Our original project was to just get it to the target, but we adapted our code to respond to dynamic targets. This meant that
+we could move a target while it was searching, and it will eventually get to it. We also allowed for target switching during
+a search, so we can select the Kinect screen on the computer, and make it chase that colour instead.
+
+
+
